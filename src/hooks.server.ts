@@ -6,5 +6,5 @@ export const handle = (async ({ event, resolve }) => {
 	console.log('here i am');
 	console.log(PUBLIC_DB_HOST, dev);
 
-  return await resolve(event);
+	return await resolve(event);
 }) satisfies Handle;
