@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+env:
+  PUBLIC_DB_HOST=${{secrets.PUBLIC_DB_HOST}}
+
 jobs:
   build:
     runs-on: ubuntu-latest
