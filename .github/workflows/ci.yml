@@ -18,7 +18,7 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npx svelte-kit sync
-      - run: npm run test
+      - run: npx vitest --run
       - run: npm run lint
       - run: npm run check
       - run: npm run build
