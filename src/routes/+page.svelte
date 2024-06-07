@@ -1,5 +1,27 @@
 <script lang="ts">
-	let { data } = $props();
+	import { browser } from '$app/environment';
+
+	const localStorageValue = browser && window.localStorage.getItem('letters');
+	// const localStorageValue = JSON.stringify(['A', 'B']); // works!
+
+	const initial: string[] = localStorageValue ? JSON.parse(localStorageValue) : [];
+	// -----------------
+	// seems to cause empty hyrdate_nodes array
+	let letters = $state<string[]>(initial);
+	let counter = $state(65);
+
+	function addNext() {
+		if (counter > 65 + 25) {
+			throw new Error('too much');
+		}
+		letters = [...letters, String.fromCharCode(counter++)];
+	}
+	function reverse() {
+		letters = letters.slice().reverse();
+	}
+	function save() {
+		window.localStorage.setItem('letters', JSON.stringify(letters));
+	}
 </script>
 
 {#snippet welcome()}
@@ -7,12 +29,12 @@
 {/snippet}
 {@render welcome()}
 
-<button onclick={data.letterStuff.addNext}>Go</button>
-<button onclick={data.letterStuff.reverse}>Reverse</button>
-<button onclick={data.letterStuff.save}>Save</button>
+<button onclick={addNext}>Go</button>
+<button onclick={reverse}>Reverse</button>
+<button onclick={save}>Save</button>
 <a href="./">home</a>
 
-{#each data.letterStuff.letters as ltr}
+{#each letters as ltr}
 	{ltr}
 {/each}
 <h2>Press F12 to open dev tools</h2>
