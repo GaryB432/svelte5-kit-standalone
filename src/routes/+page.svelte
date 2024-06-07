@@ -8,13 +8,12 @@
 {@render welcome()}
 
 <button onclick={data.letterStuff.addNext}>Go</button>
-<button onclick={data.letterStuff.reverse}>&lt;--</button>
+<button onclick={data.letterStuff.reverse}>Reverse</button>
 <button onclick={data.letterStuff.save}>Save</button>
 <a href="./">home</a>
 
 {#each data.letterStuff.letters as ltr}
 	{ltr}
 {/each}
-
-<p>Don't press reload!!</p>
+<h2>Press F12 to open dev tools</h2>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>

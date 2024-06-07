@@ -1,23 +1,20 @@
 import { browser } from '$app/environment';
 
-let localStorageValue = browser && window.localStorage.getItem('letters');
-
-if (!localStorageValue) {
-	localStorageValue = '[]';
-}
+const localStorageValue = browser && window.localStorage.getItem('letters');
 
 // -----------------
-// tried this
-// let letters = $state<string[]>(JSON.parse(localStorageValue));
+// seems to cause empty hyrdate_nodes array
+let letters = $state<string[]>(localStorageValue ? JSON.parse(localStorageValue) : []);
 
-// how about this?
-let letters = $state<string[]>([]);
-const parsedls = JSON.parse(localStorageValue);
-console.log('ready for', parsedls);
-letters = JSON.parse(localStorageValue);
-
-// just skipping local storage initializing
+// A L S O   T R I E D   T H I S
 // let letters = $state<string[]>([]);
+// const parsedls = JSON.parse(localStorageValue);
+// console.log('ready for', parsedls);
+// letters = JSON.parse(localStorageValue);
+// console.log('made it this far', letters);
+
+// just skipping local storage initializing    s e e m s   t o  w o r k !
+// let letters = $state<string[]>(['A', 'B']);
 // -----------------
 
 let counter = 65;
