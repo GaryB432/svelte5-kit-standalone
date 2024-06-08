@@ -1,6 +1,6 @@
 # Hydration Issue
 
-`reload-tester` branch
+`local-storage-thing` branch
 
 ```javascript
 // svelte/src/internal/client/dom/blocks/each.js
