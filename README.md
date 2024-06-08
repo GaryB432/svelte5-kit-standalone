@@ -4,13 +4,13 @@
 
 ```javascript
 // svelte/src/internal/client/dom/blocks/each.js
-if (hydrating) { // <-- line 152
-			/** @type {Node} */
-			var child_anchor = hydrate_nodes[0]; // hydrate_nodes is empty
+if (hydrating) {
+	// <-- line 152
+	/** @type {Node} */
+	var child_anchor = hydrate_nodes[0]; // hydrate_nodes is empty
 
-
-      // ...
-		}
+	// ...
+}
 ```
 
 # create-svelte
